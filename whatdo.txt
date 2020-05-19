@@ -1,0 +1,31 @@
+*fetch fish and bugs from http://acnhapi.com/
+*get users location (northern or southern hemisphere)(https://www.npmjs.com/package/geolocator) and local time (https://www.npmjs.com/package/date-and-time)
+*save user selections to local cache https://www.npmjs.com/package/local-storage
+create UI for user to click on critter icons to get more info
+    on info screen display 3 options at the top for the user   
+        go back
+            user can click go back to go back to the critter selection screen
+        caught
+            click caught to make light image darken to indicate caught
+        donated
+            click donated to make a small blathers icon appear on the image
+            when user goes back to the main critter screen a blathers icon will also be present
+            when user goes back to the main critter screen a net icon will also be present
+    info to be displayed for that critter   
+        price
+        shadow size
+        time of day available
+        time of year available
+    UI will also contain a sort feature
+        clicking sort icon will bring up a couple of options
+            sort option
+                buy price (max-min)
+                rarity
+                shadow size (largest to smallest)
+            filter options
+                select donated  
+                select not donated
+                select caught
+                select not caught
+                available (for that users current location and local time)
+
