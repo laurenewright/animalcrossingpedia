@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 *****ADD GITIGNORE FILE*****
 
 
+=======
+>>>>>>> edd01f71a9b79db87638d062eeb7d4a7015ab564
 *fetch fish and bugs from http://acnhapi.com/
 *get users location (northern or southern hemisphere)(https://www.npmjs.com/package/geolocator) and local time (https://www.npmjs.com/package/date-and-time)
 *save user selections to local cache https://www.npmjs.com/package/local-storage
@@ -30,5 +33,5 @@ create UI for user to click on critter icons to get more info
                 select not donated
                 select caught
                 select not caught
-                available (for that users current location and local time)
+                available (for that users current location and local time) 
 
