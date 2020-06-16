@@ -1,36 +1,49 @@
 // fetch fish data
-
-
 let fishEndpoint = 'http://acnhapi.com/v1a/fish';
-const fishData = fetch(fishEndpoint)
+const fishNames = fetch(fishEndpoint)
         .then(response => response.json())
         .then((data) => {
                 console.log(data);
-                appendFish(data);
+                appendFishName(data);
         })
-
-function appendFish(data){
+// append names
+function appendFishName(data){
         for (var i = 0; i < data.length; i++) {
-                // append each person to our page
-                var div = document.createElement("div");
+                var div = document.createElement("button");
                 div.innerHTML = data[i].name["name-USen"];
+                div.setAttribute("class", "critterButton");
+                //set alt text for reader as the name of critter
                 document.getElementById("fishDiv").appendChild(div);
                 }
         }
 
+
+//fetch bug data
 let bugEndpoint = 'http://acnhapi.com/v1a/bugs';
-const bugData = fetch(bugEndpoint)
+const bugNames = fetch(bugEndpoint)
         .then(response => response.json())
         .then((data) => {
                 console.log(data);
-                appendBug(data);
+                appendBugName(data);
         })
-
-function appendBug(data){
+//append names
+function appendBugName(data){
         for (var i = 0; i < data.length; i++) {
-                // append each person to our page
-                var div = document.createElement("div");
+                var div = document.createElement("button");
                 div.innerHTML = data[i].name["name-USen"];
+                div.setAttribute("class", "critterButton");
+                //set alt text for reader as the name of critter
                 document.getElementById("bugDiv").appendChild(div);
                 }
         }
+
+//append bug imgs from bugData
+//append fish imgs from fishData
+
+//display info when critterButton is clicked
+
+const critterButton = document.getElementsByClassName("critterButton");
+
+for (var i = 0 ; i < critterButton.length; i++) {
+        critterButton[i].addEventListener('click' , console.log("hello"))
+     }
