@@ -40,10 +40,43 @@ function appendBugName(data){
 //append bug imgs from bugData
 //append fish imgs from fishData
 
-//display info when critterButton is clicked
+//fetch and display critter info when critterButton is clicked
 
-const critterButton = document.getElementsByClassName("critterButton");
+var critterButton = document.getElementsByClassName("critterButton");
+function onClickAlert(){
+        for (var i=0; i < critterButton.length; i++) {
+                critterButton[i].onclick = function(){
+                        modal.style.display = "block";
+                }
+        }
+}
 
-for (var i = 0 ; i < critterButton.length; i++) {
-        critterButton[i].addEventListener('click' , console.log("hello"))
-     }
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+ var btn = document.getElementsByClassName("critterButton");
+
+// Get the <span> element that closes the modal
+ var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+ btn.onclick = function() {
+   modal.style.display = "block";
+ }
+
+// When the user clicks on <span> (x), close the modal
+ span.onclick = function() {
+   modal.style.display = "none";
+ }
+
+// When the user clicks anywhere outside of the modal, close it
+ window.onclick = function(event) {
+   if (event.target == modal) {
+     modal.style.display = "none";
+   }
+ }
+
+
+
