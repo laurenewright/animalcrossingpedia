@@ -5,6 +5,7 @@ const fishNames = fetch(fishEndpoint)
         .then((data) => {
                 console.log(data);
                 appendFishName(data);
+                //appendFishInfo(data);
         })
 // append names
 function appendFishName(data){
@@ -25,6 +26,7 @@ const bugNames = fetch(bugEndpoint)
         .then((data) => {
                 console.log(data);
                 appendBugName(data);
+                appendBugInfo(data);
         })
 //append names
 function appendBugName(data){
@@ -36,12 +38,37 @@ function appendBugName(data){
                 document.getElementById("bugDiv").appendChild(div);
                 }
         }
-
 //append bug imgs from bugData
 //append fish imgs from fishData
 
 //fetch and display critter info when critterButton is clicked
+function appendBugInfo(data){
+        for (var i = 0; i < data.length; i++) {
+                var div = document.createElement("p");
+                document.getElementById("bugInfo").innerHTML = data[i].name["name-USen"];
+                div.setAttribute("class", "critterInfo");
+                //set alt text for reader as the name of critter
+                document.getElementById("bugInfo").appendChild(div);
+                }
+        }
 
+
+// function appendFishInfo(data){
+//         for (var i = 0; i < data.length; i++) {
+//                 var div = document.createElement("div");
+//                 div.innerHTML = data[i]["museum-name"];
+//                 div.setAttribute("class", "critterInfo");
+//                 //set alt text for reader as the name of critter
+//                 document.getElementById("fishInfo").appendChild(div);
+//                 }
+//         }
+
+        // function myFunction(data) {
+        //         document.getElementById("bugInfo").innerHTML = data[i]["name-USen";
+        //     }
+
+
+//display model when critterButton is clicked
 var critterButton = document.getElementsByClassName("critterButton");
 function onClickAlert(){
         for (var i=0; i < critterButton.length; i++) {
@@ -50,7 +77,6 @@ function onClickAlert(){
                 }
         }
 }
-
 
 // Get the modal
 var modal = document.getElementById("myModal");
