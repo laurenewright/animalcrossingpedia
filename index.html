@@ -6,29 +6,36 @@
     </head>
     <body>
         <h2>Animal Crossing Critterpedia</h2>
-        <div onclick="onClickAlert()">
-          <!-- <button onclick="appendBugInfo()">bug info</button> -->
+        <div>
+          <div>
           <!-- The Modal -->
-          <div id="myModal" class="modal">
+          <div id="myModalFish" class="modalFish">
             <!-- Modal content -->
-            <div class="modal-content">
-                                              <p id="bugInfo" >trlololo</p>
-              <span class="close">&times;</span>
+            <div class="modal-content-fish">
+              <p id="fishInfo">trlololo</p>
+              <span class="closeFish">&times;</span>
               <p>Some text in the Modal..</p>
-              <div id='bugInfo'>test</div>
-              <div id='fishInfo'>test</div>
             </div> 
           </div>
+          <div>
+            <!-- The Modal -->
+            <div id="myModalBug" class="modalBug">
+              <!-- Modal content -->
+              <div class="modal-content-bug">
+                <p id="bugInfo">trlololo</p>
+                <span class="closeBug">&times;</span>
+                <p>Some text in the Modal..</p>
+              </div> 
+            </div>
           <h3>Images</h3>
             <div id="imgDiv">
             </div>
           <h3>Bugs</h3>
-            <div id="bugDiv">
+            <div id="bugDiv"onclick="onClickAlertBug()">
             </div>
           <h3>Fish</h3>
-            <div id='fishDiv'>
+            <div id='fishDiv'onclick="onClickAlertFish()">
             </div>
-        </div>
     </body>
     <script src='js/app.js'></script>
 </html>
