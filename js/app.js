@@ -7,34 +7,43 @@ const fishNames = fetch(fishEndpoint)
                 appendFishName(data);
                 appendFishInfo(data);
         })
-// append names
+// append fish names
 function appendFishName(data){
         for (var i = 0; i < data.length; i++) {
-                var div = document.createElement("button");
+                var div = document.createElement("p");
+                var iconDiv = document.createElement("img");
+                iconDiv.src = data[i]["icon_uri"];
                 div.innerHTML = data[i].name["name-USen"];
-                div.setAttribute("class", "critterButtonFish");
+                div.setAttribute("class", "critterFish");
+                iconDiv.setAttribute("class", "critterFish");
                 //set alt text for reader as the name of critter
                 document.getElementById("fishDiv").appendChild(div);
+                document.getElementById("fishDiv").appendChild(iconDiv);
                 }
         }
 
 function appendFishInfo(data){
         for (var i = 0; i < data.length; i++) {
-                var div1 = document.createElement("p");
-                var div2 = document.createElement("p");
-                var div3 = document.createElement("p");
-                div1.innerHTML = data[i].name["name-USen"];
-                div2.innerHTML = data[i].price;
-                div3.innerHTML = data[i]["museum-phrase"];
-                div1.setAttribute("class", "critterInfo fish");
+                var imgDiv = document.createElement("img");
+                var nameDiv = document.createElement("p");
+                var priceDiv = document.createElement("p");
+                var phraseDiv = document.createElement("p");
+                imgDiv.src = data[i]["image_uri"];
+                nameDiv.innerHTML = data[i].name["name-USen"];
+                priceDiv.innerHTML = data[i].price;
+                phraseDiv.innerHTML = data[i]["museum-phrase"];
+                nameDiv.setAttribute("class", "critterInfo fish");
                 //set alt text for reader as the name of critter
-                document.getElementById("fishInfo").appendChild(div1);
-                document.getElementById("fishInfo").appendChild(div2);
-                document.getElementById("fishInfo").appendChild(div3);
+                document.getElementById("fishInfo").appendChild(imgDiv);
+                document.getElementById("fishInfo").appendChild(nameDiv);
+                document.getElementById("fishInfo").appendChild(priceDiv);
+                document.getElementById("fishInfo").appendChild(phraseDiv);
         }
 }
 
-//fetch bug data
+
+
+// fetch bug data
 let bugEndpoint = 'http://acnhapi.com/v1a/bugs';
 const bugNames = fetch(bugEndpoint)
         .then(response => response.json())
@@ -43,53 +52,58 @@ const bugNames = fetch(bugEndpoint)
                 appendBugName(data);
                 appendBugInfo(data);
         })
-//append names
+// append bug names
 function appendBugName(data){
         for (var i = 0; i < data.length; i++) {
-                var div = document.createElement("button");
+                var iconDiv = document.createElement("img");
+                iconDiv.src = data[i]["icon_uri"];
+                var div = document.createElement("p");
                 div.innerHTML = data[i].name["name-USen"];
-                div.setAttribute("class", "critterButtonBug");
+                div.setAttribute("class", "critterBug");
+                iconDiv.setAttribute("class", "critterBug");
                 //set alt text for reader as the name of critter
                 document.getElementById("bugDiv").appendChild(div);
+                document.getElementById("bugDiv").appendChild(iconDiv);
                 }
         }
-//append bug imgs from bugData
-//append fish imgs from fishData
 
-//fetch and display critter info when critterButton is clicked
+// fetch and display critter info when critter is clicked
 function appendBugInfo(data){
         for (var i = 0; i < data.length; i++) {
-                var div1 = document.createElement("p");
-                var div2 = document.createElement("p");
-                var div3 = document.createElement("p");
-                div1.innerHTML = data[i].name["name-USen"];
-                div2.innerHTML = data[i].price;
-                div3.innerHTML = data[i]["museum-phrase"];
-                div1.setAttribute("class", "critterInfo bug");
+                var imgDiv = document.createElement("img");
+                var nameDiv = document.createElement("p");
+                var priceDiv = document.createElement("p");
+                var phraseDiv = document.createElement("p");
+                imgDiv.src = data[i]["image_uri"];
+                nameDiv.innerHTML = data[i].name["name-USen"];
+                priceDiv.innerHTML = data[i].price;
+                phraseDiv.innerHTML = data[i]["museum-phrase"];
+                nameDiv.setAttribute("class", "critterInfo bug");
                 //set alt text for reader as the name of critter
-                document.getElementById("bugInfo").appendChild(div1);
-                document.getElementById("bugInfo").appendChild(div2);
-                document.getElementById("bugInfo").appendChild(div3);
+                document.getElementById("bugInfo").appendChild(imgDiv);
+                document.getElementById("bugInfo").appendChild(nameDiv);
+                document.getElementById("bugInfo").appendChild(priceDiv);
+                document.getElementById("bugInfo").appendChild(phraseDiv);
                 }
         }
 
 
 
 
-//display modal when critterButton is clicked
-var critterButtonFish = document.getElementsByClassName("critterButtonFish");
+// display modal when critter is clicked
+var critterFish = document.getElementsByClassName("critterFish");
 function onClickAlertFish(){
-        for (var i=0; i < critterButtonFish.length; i++) {
-                critterButtonFish[i].onclick = function(){
+        for (var i=0; i < critterFish.length; i++) {
+                critterFish[i].onclick = function(){
                         modalFish.style.display = "block";
                 }
         }
 }
 
-var critterButtonBug = document.getElementsByClassName("critterButtonBug");
+var critterBug = document.getElementsByClassName("critterBug");
 function onClickAlertBug(){
-        for (var i=0; i < critterButtonBug.length; i++) {
-                critterButtonBug[i].onclick = function(){
+        for (var i=0; i < critterBug.length; i++) {
+                critterBug[i].onclick = function(){
                         modalBug.style.display = "block";
                 }
         }
@@ -103,12 +117,12 @@ var modalBug = document.getElementById("myModalBug");
  var spanBug = document.getElementsByClassName("closeBug")[0];
  var spanFish = document.getElementsByClassName("closeFish")[0];
 
-// When the user clicks on the button, open the modal
- critterButtonBug.onclick = function() {
+// When the user clicks on the , open the modal
+ critterBug.onclick = function() {
    modalBug.style.display = "block";
  }
 
- critterButtonFish.onclick = function() {
+ critterFish.onclick = function() {
         modalFish.style.display = "block";
       }
 
@@ -129,3 +143,30 @@ var modalBug = document.getElementById("myModalBug");
         modalFish.style.display = "none";
       }
  }
+
+
+
+// tabbed content
+ function openPage(pageName, element, color) {
+        // Hide all elements with class="tabcontent" by default */
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+      
+        // Remove the background color of all tablinks/buttons
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+        }
+      
+        // Show the specific tab content
+        document.getElementById(pageName).style.display = "block";
+      
+        // Add the specific color to the button used to open the tab content
+        element.style.backgroundColor = color;
+      }
+      
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();

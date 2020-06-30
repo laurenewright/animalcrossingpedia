@@ -6,36 +6,46 @@
     </head>
     <body>
         <h2>Animal Crossing Critterpedia</h2>
+        <button class="tablink" onclick="openPage('Fish', this, 'red')"id="defaultOpen">Fish</button>
+        <button class="tablink" onclick="openPage('Bugs', this, 'green')">Bugs</button>
+        <button class="tablink" onclick="openPage('Caught', this, 'green')">Caught</button>
+        <button class="tablink" onclick="openPage('Donated', this, 'green')">Donated</button>
         <div>
           <div>
           <!-- The Modal -->
-          <div id="myModalFish" class="modalFish">
+            <div id="myModalFish" class="modalFish">
             <!-- Modal content -->
-            <div class="modal-content-fish">
-              <p id="fishInfo">trlololo</p>
-              <span class="closeFish">&times;</span>
-              <p>Some text in the Modal..</p>
-            </div> 
-          </div>
-          <div>
-            <!-- The Modal -->
-            <div id="myModalBug" class="modalBug">
-              <!-- Modal content -->
-              <div class="modal-content-bug">
-                <p id="bugInfo">trlololo</p>
-                <span class="closeBug">&times;</span>
+              <div class="modal-content-fish">
+                <span class="closeFish">&times;</span>
+                <p id="fishInfo">trlololo</p>
+                <p id="fishPic"></p>
                 <p>Some text in the Modal..</p>
               </div> 
             </div>
-          <h3>Images</h3>
-            <div id="imgDiv">
-            </div>
-          <h3>Bugs</h3>
-            <div id="bugDiv"onclick="onClickAlertBug()">
-            </div>
-          <h3>Fish</h3>
-            <div id='fishDiv'onclick="onClickAlertFish()">
-            </div>
+          <div>
+            <!-- The Modal -->
+          <div id="myModalBug" class="modalBug">
+            <!-- Modal content -->
+            <div class="modal-content-bug">
+              <span class="closeBug">&times;</span>
+              <p id="bugInfo">trlololo</p>
+              <p id="bugPic"></p>
+              <p>Some text in the Modal..</p>
+            </div> 
+          </div>
+          <div id="Fish" class="tabcontent">
+            <div id='fishDiv'onclick="onClickAlertFish()"></div>
+          </div>
+          <div id="Bugs" class="tabcontent">
+            <div id="bugDiv"onclick="onClickAlertBug()"></div>
+          </div>
+          <div id="Caught" class="tabcontent">
+            <div id="bugDiv"onclick="onClickAlertCaught()"></div>
+          </div>
+          <div id="Donated" class="tabcontent">
+            <div id="bugDiv"onclick="onClickAlertDonated()"></div>
+          </div>
+        </div>
     </body>
     <script src='js/app.js'></script>
 </html>

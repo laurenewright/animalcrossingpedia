@@ -1,5 +1,4 @@
-.critterButtonFish, .critterButtonBug {
-    background-color: #FF7F50;
+.critterFish, .critterBug {
     border: none;
     color: black;
     padding: 15px 32px;
@@ -9,7 +8,9 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    float:left;
   }
+
   /* The Modal (background) */
 .modalFish, .modalBug {
   display: none; /*Hidden by default*/
@@ -28,22 +29,51 @@
  .modal-content-bug, .modal-content-fish {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-   padding: 20px;
+  padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
  } 
 
 /* The Close Button */
-.close {
+.closeBug, .closeFish {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.closeBug:hover,
+.closeBug:focus,
+.closeFish:hover,
+.closeFish:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 } 
+
+
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
