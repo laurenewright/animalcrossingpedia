@@ -10,6 +10,9 @@ const fishNames = fetch(fishEndpoint)
 // append fish names
 function appendFishName(data){
         for (var i = 0; i < data.length; i++) {
+                var wrapperDiv = document.createElement("div");
+                wrapperDiv.setAttribute("class", "fish");
+                wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
                 var div = document.createElement("p");
                 var iconDiv = document.createElement("img");
                 iconDiv.src = data[i]["icon_uri"];
@@ -17,13 +20,32 @@ function appendFishName(data){
                 div.setAttribute("class", "critterFish");
                 iconDiv.setAttribute("class", "critterFish");
                 //set alt text for reader as the name of critter
-                document.getElementById("fishDiv").appendChild(div);
-                document.getElementById("fishDiv").appendChild(iconDiv);
+                wrapperDiv.appendChild(div);
+                wrapperDiv.appendChild(iconDiv);
+                document.getElementById("fishDiv").appendChild(wrapperDiv);
+                var critterFish = document.getElementsByClassName("critterFish");
+                //var fishNames = data[i].name["name-USen"];
+                document.getElementById(data[i].name["name-USen"]).onclick = function() {
+                        for (var i=0; i < critterFish.length; i++) {
+                                critterFish[i].onclick = function(){
+                                        modalFish.style.display = "block";
+                                        
+                                }
+                        }
+                }
+
                 }
         }
 
+        // document.getElementById(data[i].name["name-USen"]).onclick = function() {
+                
+        // }
+
 function appendFishInfo(data){
         for (var i = 0; i < data.length; i++) {
+                var wrapperDiv = document.createElement("div");
+                wrapperDiv.setAttribute("class", "fish");
+                wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
                 var imgDiv = document.createElement("img");
                 var nameDiv = document.createElement("p");
                 var priceDiv = document.createElement("p");
@@ -34,14 +56,13 @@ function appendFishInfo(data){
                 phraseDiv.innerHTML = data[i]["museum-phrase"];
                 nameDiv.setAttribute("class", "critterInfo fish");
                 //set alt text for reader as the name of critter
-                document.getElementById("fishInfo").appendChild(imgDiv);
-                document.getElementById("fishInfo").appendChild(nameDiv);
-                document.getElementById("fishInfo").appendChild(priceDiv);
-                document.getElementById("fishInfo").appendChild(phraseDiv);
+                wrapperDiv.appendChild(imgDiv);
+                wrapperDiv.appendChild(nameDiv);
+                wrapperDiv.appendChild(priceDiv);
+                wrapperDiv.appendChild(phraseDiv);
+                document.getElementById("fishInfo").appendChild(wrapperDiv);
         }
 }
-
-
 
 // fetch bug data
 let bugEndpoint = 'http://acnhapi.com/v1a/bugs';
@@ -70,6 +91,9 @@ function appendBugName(data){
 // fetch and display critter info when critter is clicked
 function appendBugInfo(data){
         for (var i = 0; i < data.length; i++) {
+                var wrapperDiv = document.createElement("div");
+                wrapperDiv.setAttribute("class", "bug");
+                wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
                 var imgDiv = document.createElement("img");
                 var nameDiv = document.createElement("p");
                 var priceDiv = document.createElement("p");
@@ -91,14 +115,14 @@ function appendBugInfo(data){
 
 
 // display modal when critter is clicked
-var critterFish = document.getElementsByClassName("critterFish");
-function onClickAlertFish(){
-        for (var i=0; i < critterFish.length; i++) {
-                critterFish[i].onclick = function(){
-                        modalFish.style.display = "block";
-                }
-        }
-}
+// var critterFish = document.getElementsByClassName("critterFish");
+// function onClickAlertFish(){
+//         for (var i=0; i < critterFish.length; i++) {
+//                 critterFish[i].onclick = function(){
+//                         modalFish.style.display = "block";
+//                 }
+//         }
+// }
 
 var critterBug = document.getElementsByClassName("critterBug");
 function onClickAlertBug(){
@@ -121,7 +145,7 @@ var modalBug = document.getElementById("myModalBug");
  critterBug.onclick = function() {
    modalBug.style.display = "block";
  }
-
+ var critterFish = document.getElementsByClassName("critterFish");
  critterFish.onclick = function() {
         modalFish.style.display = "block";
       }
