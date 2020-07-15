@@ -10,7 +10,13 @@
     cursor: pointer;
     float: left;
   }
-
+  
+  .hide{ display:none;
+  }
+  
+  .show{ display: block;
+  }
+  
   /* The Modal (background) */
 .modalFish, .modalBug {
   display: none; /*Hidden by default*/

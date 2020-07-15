@@ -8,32 +8,40 @@ const fishNames = fetch(fishEndpoint)
                 appendFishInfo(data);
         })
 // append fish names
-function appendFishName(data){
+const fishName = function appendFishName(data){
         for (var i = 0; i < data.length; i++) {
+                var fishId = data[i].id;
+                // creating and setting the attributes of the wrapperDiv
                 var wrapperDiv = document.createElement("div");
                 wrapperDiv.setAttribute("class", "fish");
                 wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
-                var div = document.createElement("p");
+                // creating the nameDiv and iconDiv
+                var nameDiv = document.createElement("p");
                 var iconDiv = document.createElement("img");
+                // giving iconDiv it's image source from api
                 iconDiv.src = data[i]["icon_uri"];
-                div.innerHTML = data[i].name["name-USen"];
-                div.setAttribute("class", "critterFish");
+                // giving nameDiv its crittername from api
+                nameDiv.innerHTML = data[i].name["name-USen"];
+                // setting class for nameDiv and iconDiv
+                nameDiv.setAttribute("class", "critterFish");
                 iconDiv.setAttribute("class", "critterFish");
-                //set alt text for reader as the name of critter
-                wrapperDiv.appendChild(div);
+                // set alt text for reader as the name of critter
+                // appending name and icon to wrapperDiv
+                wrapperDiv.appendChild(nameDiv);
                 wrapperDiv.appendChild(iconDiv);
+                // appending wrapperDiv to fishDiv
                 document.getElementById("fishDiv").appendChild(wrapperDiv);
                 var critterFish = document.getElementsByClassName("critterFish");
                 //var fishNames = data[i].name["name-USen"];
                 document.getElementById(data[i].name["name-USen"]).onclick = function() {
+                        //makes all buttons clickable
                         for (var i=0; i < critterFish.length; i++) {
+                        //         // show modal on click
                                 critterFish[i].onclick = function(){
                                         modalFish.style.display = "block";
-                                        
                                 }
                         }
                 }
-
                 }
         }
 
@@ -41,11 +49,11 @@ function appendFishName(data){
                 
         // }
 
-function appendFishInfo(data){
+const fishInfo = function appendFishInfo(data){
         for (var i = 0; i < data.length; i++) {
                 var wrapperDiv = document.createElement("div");
                 wrapperDiv.setAttribute("class", "fish");
-                wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
+                wrapperDiv.setAttribute("id", data[i].name["name-USen"], "hide");
                 var imgDiv = document.createElement("img");
                 var nameDiv = document.createElement("p");
                 var priceDiv = document.createElement("p");
@@ -61,8 +69,21 @@ function appendFishInfo(data){
                 wrapperDiv.appendChild(priceDiv);
                 wrapperDiv.appendChild(phraseDiv);
                 document.getElementById("fishInfo").appendChild(wrapperDiv);
+                // document.getElementById(data[i].name["name-USen"]).onclick = function(){
+                        //console.log(data[i].name["name-USen"]);
+                        // wrapperDiv.setAttribute("class", "fish show");
+                        // console.log(this);
+                // }
         }
 }
+
+// function revealOnClick(data){
+//         if('click',  document.getElementById(data[i].name["name-USen"])){
+//                 wrapperDiv.setAttribute("class", "fish show");
+//         }
+// }
+
+
 
 // fetch bug data
 let bugEndpoint = 'http://acnhapi.com/v1a/bugs';
