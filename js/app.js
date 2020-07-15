@@ -4,8 +4,8 @@ const fishNames = fetch(fishEndpoint)
         .then(response => response.json())
         .then((data) => {
                 console.log(data);
-                appendFishName(data);
-                appendFishInfo(data);
+                fishName(data);
+                fishInfo(data);
         })
 // append fish names
 const fishName = function appendFishName(data){
@@ -41,13 +41,16 @@ const fishName = function appendFishName(data){
                                         modalFish.style.display = "block";
                                 }
                         }
+
                 }
                 }
         }
 
-        // document.getElementById(data[i].name["name-USen"]).onclick = function() {
-                
-        // }
+
+
+// when fishName[id] is clicked show fishInfo[id] in modal
+// each fishName needs to be clickable
+// maybe use find()?
 
 const fishInfo = function appendFishInfo(data){
         for (var i = 0; i < data.length; i++) {
