@@ -38,6 +38,7 @@ const fishName = function appendFishName(data){
                                 // show modal on click
                                 critterFish[i].onclick = function(){
                                         modalFish.fishId.style.display = "block";
+                                        // ^ adding fishId doesn't currently work
                                 }
                         }
                         // when fishName[id] is clicked show fishInfo[id] in modal
