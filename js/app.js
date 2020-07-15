@@ -10,7 +10,6 @@ const fishNames = fetch(fishEndpoint)
 // append fish names
 const fishName = function appendFishName(data){
         for (var i = 0; i < data.length; i++) {
-                var fishId = data[i].id;
                 // creating and setting the attributes of the wrapperDiv
                 var wrapperDiv = document.createElement("div");
                 wrapperDiv.setAttribute("class", "fish");
@@ -32,7 +31,6 @@ const fishName = function appendFishName(data){
                 // appending wrapperDiv to fishDiv
                 document.getElementById("fishDiv").appendChild(wrapperDiv);
                 var critterFish = document.getElementsByClassName("critterFish");
-                //var fishNames = data[i].name["name-USen"];
                 document.getElementById(data[i].name["name-USen"]).onclick = function() {
                         //makes all buttons clickable
                         for (var i=0; i < critterFish.length; i++) {
@@ -41,7 +39,9 @@ const fishName = function appendFishName(data){
                                         modalFish.style.display = "block";
                                 }
                         }
-
+                        // when fishName[id] is clicked show fishInfo[id] in modal
+                        // each fishName needs to be clickable
+                        // maybe use find()?
                 }
                 }
         }
@@ -153,6 +153,7 @@ function onClickAlertBug(){
         for (var i=0; i < critterBug.length; i++) {
                 critterBug[i].onclick = function(){
                         modalBug.style.display = "block";
+                        console.log(this);
                 }
         }
 }
@@ -169,10 +170,6 @@ var modalBug = document.getElementById("myModalBug");
  critterBug.onclick = function() {
    modalBug.style.display = "block";
  }
- var critterFish = document.getElementsByClassName("critterFish");
- critterFish.onclick = function() {
-        modalFish.style.display = "block";
-      }
 
 // When the user clicks on <span> (x), close the modal
  spanBug.onclick = function() {
