@@ -32,3 +32,5 @@ create UI for user to click on critter icons to get more info
                 select not caught
                 available (for that users current location and local time) 
 
+
+
