@@ -1,3 +1,5 @@
+// const { remove } = require("local-storage");
+
 // fetch fish data
 let fishEndpoint = 'http://acnhapi.com/v1a/fish';
 const fishNames = fetch(fishEndpoint)
@@ -57,14 +59,17 @@ const fishName = function appendFishName(data){
                                 var clone2 = desiredFish.cloneNode(true);
                                 donateDiv.appendChild(clone1);
                                 caughtDiv.appendChild(clone2);
+                                desiredFish.outerHTML = "";
+                                // document.getElementById("caughtButton").outerHTML = "";
                         }
                         caughtButton.onclick = function(){
                                 var desiredFish = event.target.parentElement;
-                                var caughtDiv = document.getElementById("caughtDiv");  
+                                var caughtDiv = document.getElementById("caughtDiv");
                                 var clone1 = desiredFish.cloneNode(true);
                                 caughtDiv.appendChild(clone1);
-
+                                this.remove();
                         }
+
                         
                 // }
                 // var critterFish = document.getElementsByClassName("critterFish");
@@ -173,14 +178,14 @@ const bugName = function appendBugName(data){
                                 donateDiv.appendChild(clone1);
                                 caughtDiv.appendChild(clone2);
                                 desiredBug.outerHTML = "";
-                                document.getElementById("caughtButton").outerHTML = "";
+                                // document.getElementById("caughtButton").outerHTML = "";
                         }
                         caughtButton.onclick = function(){
                                 var desiredBug = event.target.parentElement;
-                                var caughtDiv = document.getElementById("caughtDiv");  
+                                var caughtDiv = document.getElementById("caughtDiv");
                                 var clone1 = desiredBug.cloneNode(true);
                                 caughtDiv.appendChild(clone1);
-                                document.getElementById("caughtButton").outerHTML = "";
+                                this.remove();
                         }
 
 
