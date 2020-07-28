@@ -1,5 +1,5 @@
 // const { remove } = require("local-storage");
-
+var caughtButton = {};
 // fetch fish data
 let fishEndpoint = 'http://acnhapi.com/v1a/fish';
 const fishNames = fetch(fishEndpoint)
@@ -7,7 +7,6 @@ const fishNames = fetch(fishEndpoint)
         .then((data) => {
                 console.log(data);
                 fishName(data);
-                // fishInfo(data);
         })
 // append fish names
 const fishName = function appendFishName(data){
@@ -15,6 +14,10 @@ const fishName = function appendFishName(data){
                 // created button for caught or donate
                 var caughtButton = document.createElement("button");
                 var donateButton = document.createElement("button");
+                caughtButton.setAttribute("class", "addButton");
+                donateButton.setAttribute("class", "addButton");
+                caughtButton.setAttribute("id", "caughtButton");
+                donateButton.setAttribute("id", "donateButton");
                 // label caught or donate button
                 caughtButton.innerHTML = "Caught";
                 donateButton.innerHTML = "Donated";
@@ -49,35 +52,75 @@ const fishName = function appendFishName(data){
                         //console.log(desiredFish);
                         //console.log(this);
                         // if(desiredFish){
-
-                        // }
-                        donateButton.onclick = function(){
+                
+                        // add event listener to donateButton
+                        donateButton.addEventListener('click', function(event){
+                                // desired fish pinpoints which div to be cloned
                                 var desiredFish = event.target.parentElement;
-                                var donateDiv = document.getElementById("donatedDiv");  
-                                var caughtDiv = document.getElementById("caughtDiv");  
-                                var clone1 = desiredFish.cloneNode(true);
-                                var clone2 = desiredFish.cloneNode(true);
-                                donateDiv.appendChild(clone1);
-                                caughtDiv.appendChild(clone2);
-                                desiredFish.outerHTML = "";
-                                // document.getElementById("caughtButton").outerHTML = "";
-                        }
-                        caughtButton.onclick = function(){
-                                var desiredFish = event.target.parentElement;
-                                var caughtDiv = document.getElementById("caughtDiv");
-                                var clone1 = desiredFish.cloneNode(true);
-                                caughtDiv.appendChild(clone1);
-                                this.remove();
-                        }
+                                // variable for cloning the node 
+                                var clone = desiredFish.cloneNode(true);
+                                clone.id = "donatedFish";
+                                // if donate button is clicked
+                                if(donateButton){
+                                        // append a clone of desired fish to the donatedDiv
+                                        donatedDiv.appendChild(clone);
+                                        // remove the donate button
+                                        this.remove();
+                                // log error if this does not work
+                                } else console.log("error");
+                        })
 
-                        
-                // }
-                // var critterFish = document.getElementsByClassName("critterFish");
+
+                        // add event listener to caughtButton
+                         caughtButton.addEventListener('click', function(event){
+                                 // desired fish pinpoints which div to be cloned
+                                var desiredFish = event.target.parentElement;
+                                // variable for cloning the node 
+                                var clone = desiredFish.cloneNode(true);
+                                // if donate button is clicked
+                                if(caughtButton){
+                                        // append a clone of desired fish to the caughtDiv
+                                        caughtDiv.appendChild(clone);
+                                        // remove the donate button
+                                        this.remove();
+                                // log error if this does not work
+                                } else console.log("error");
+                         })
+
+
+
+                                // Not sure if I can save cloned div to local storage. Attempting to create the div to the correct category div when the button is clicked
+                                // const button = caughtButton.addEventListener('click', function(data){
+                                //         //var desiredFish = event.target.parentElement;
+                                //         //var clone = desiredFish.cloneNode(true);
+                                //         console.log("hey");
+                                //         if(caughtButton.innerHTML === "Caught"){
+                                //                 // creating and setting the attributes of the wrapperDiv
+                                //                 var wrapperDiv = document.createElement("div");
+                                //                 // give wrapperDiv attributes
+                                //                 wrapperDiv.setAttribute("class", "fish");
+                                //                 wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
+                                //                 // creating the nameDiv and iconDiv
+                                //                 var nameDiv = document.createElement("p");
+                                //                 var iconDiv = document.createElement("img");
+                                //                 // giving iconDiv it's image source from api
+                                //                 iconDiv.src = data[i]["icon_uri"];
+                                //                 // giving nameDiv its crittername from api
+                                //                 nameDiv.innerHTML = data[i].name["name-USen"];
+                                //                 // setting class for nameDiv and iconDiv
+                                //                 nameDiv.setAttribute("class", "critterFish");
+                                //                 iconDiv.setAttribute("class", "critterFish");
+                                //                 // set alt text for reader as the name of critter
+                                //                 // appending name and icon to wrapperDiv
+                                //                 wrapperDiv.appendChild(nameDiv);
+                                //                 wrapperDiv.appendChild(iconDiv);
+                                //                 this.remove();
+                                //         } else console.log("error");
+                                //  }) 
+
                 }
         }
-
-
-
+        // localStorage.setItem('caughtDiv', caughtDiv.innerHTML);
 // when fishName[id] is clicked show fishInfo[id] in modal
 // each fishName needs to be clickable
 // maybe use find()?
@@ -169,24 +212,39 @@ const bugName = function appendBugName(data){
 
                         
                 // }
-                        donateButton.onclick = function(){
+
+                        // add event listener to donateButton
+                        donateButton.addEventListener('click', function(event){
+                                // desired bug pinpoints which div to be cloned
                                 var desiredBug = event.target.parentElement;
-                                var donateDiv = document.getElementById("donatedDiv");  
-                                var caughtDiv = document.getElementById("caughtDiv");  
-                                var clone1 = desiredBug.cloneNode(true);
-                                var clone2 = desiredBug.cloneNode(true);
-                                donateDiv.appendChild(clone1);
-                                caughtDiv.appendChild(clone2);
-                                desiredBug.outerHTML = "";
-                                // document.getElementById("caughtButton").outerHTML = "";
-                        }
-                        caughtButton.onclick = function(){
+                                // variable for cloning the node 
+                                var clone = desiredBug.cloneNode(true);
+                                // if donate button is clicked
+                                if(donateButton){
+                                        // append a clone of desired bug to the donatedDiv
+                                        donatedDiv.appendChild(clone);
+                                        // remove the donate button
+                                        this.remove();
+                                // log error if this does not work
+                                } else console.log("error");
+                        })
+
+
+                        // add event listener to caughtButton
+                         caughtButton.addEventListener('click', function(event){
+                                 // desired fish pinpoints which div to be cloned
                                 var desiredBug = event.target.parentElement;
-                                var caughtDiv = document.getElementById("caughtDiv");
-                                var clone1 = desiredBug.cloneNode(true);
-                                caughtDiv.appendChild(clone1);
-                                this.remove();
-                        }
+                                // variable for cloning the node 
+                                var clone = desiredBug.cloneNode(true);
+                                // if donate button is clicked
+                                if(caughtButton){
+                                        // append a clone of desired bug to the caughtDiv
+                                        caughtDiv.appendChild(clone);
+                                        // remove the donate button
+                                        this.remove();
+                                // log error if this does not work
+                                } else console.log("error");
+                         })
 
 
 
