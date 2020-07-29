@@ -84,7 +84,7 @@ const fishName = function appendFishName(data){
                         if(caughtButton){
                                 // append a clone of desired fish to the caughtDiv
                                 caughtDiv.appendChild(clone);
-                                // remove the donate button
+                                // re move the donate button
                                 this.remove();
                                 // needing to loop through buttons?
                                 var button = document.getElementById("caughtCount"),
