@@ -105,7 +105,7 @@ const fishName = function appendFishName(data){
                             downloadLink.download = fileNameToSaveAs;
                             downloadLink.innerHTML = "Download File";
                             downloadLink.href = textToSaveAsURL;
-                            downloadLink.onclick = destroyClickedElement;
+                        //     downloadLink.onclick = destroyClickedElement;
                             downloadLink.style.display = "none";
                             document.body.appendChild(downloadLink);
                          
