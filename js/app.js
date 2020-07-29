@@ -64,10 +64,15 @@ const fishName = function appendFishName(data){
                                 donatedDiv.appendChild(clone);
                                 // remove the donate button
                                 this.remove();
+                                // needing to loop through buttons?
+                                var button = document.getElementById("donatedCount"),
+                                count = 0;
+                                count += 1;
+                                button.innerHTML = "Donated " + count + "/80";
+                                console.log(donatedDiv);
                         // log error if this does not work
                         } else console.log("error");
                 })
-
 
                 // add event listener to caughtButton
                         caughtButton.addEventListener('click', function(event){
@@ -81,12 +86,36 @@ const fishName = function appendFishName(data){
                                 caughtDiv.appendChild(clone);
                                 // remove the donate button
                                 this.remove();
+                                // needing to loop through buttons?
+                                var button = document.getElementById("caughtCount"),
+                                count = 0;
+                                count += 1;
+                                button.innerHTML = "Caught " + count + "/80";
                         // log error if this does not work
                         } else console.log("error");
                         })
 
+                        saveDonated.addEventListener('click', () => {
+                            var textToSave = document.getElementById("donatedDiv").value;
+                            var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+                            var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+                            var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+                         
+                            var downloadLink = document.createElement("a");
+                            downloadLink.download = fileNameToSaveAs;
+                            downloadLink.innerHTML = "Download File";
+                            downloadLink.href = textToSaveAsURL;
+                            downloadLink.onclick = destroyClickedElement;
+                            downloadLink.style.display = "none";
+                            document.body.appendChild(downloadLink);
+                         
+                            downloadLink.click();
+                        })
+
         }
 }
+
+
         // localStorage.setItem('caughtDiv', caughtDiv.innerHTML);
 
 const fishInfo = function appendFishInfo(data){
@@ -126,6 +155,7 @@ const bugNames = fetch(bugEndpoint)
                 bugName(data);
                 bugInfo(data);
         })
+
 // append bug names
 const bugName = function appendBugName(data){
         for (var i = 0; i < data.length; i++) {
@@ -202,8 +232,6 @@ const bugName = function appendBugName(data){
 }
 
 
-
-        // }
 // fetch and display critter info when critter is clicked
 const bugInfo = function appendBugInfo(data){
         for (var i = 0; i < data.length; i++) {
@@ -226,10 +254,6 @@ const bugInfo = function appendBugInfo(data){
                 document.getElementById("bugInfo").appendChild(phraseDiv);
                 }
         }
-
-
-
-
 
 
 // Get the modal
@@ -294,3 +318,5 @@ critterFish.onclick = function() {
       
       // Get the element with id="defaultOpen" and click on it
       document.getElementById("defaultOpen").click();
+
+      // user can download a copy of their donated and caught critters 
