@@ -57,7 +57,7 @@ const fishName = function appendFishName(data){
                         var desiredFish = event.target.parentElement;
                         // variable for cloning the node 
                         var clone = desiredFish.cloneNode(true);
-                        clone.id = "donatedFish";
+                        clone.id = "donated";
                         // if donate button is clicked
                         if(donateButton){
                                 // append a clone of desired fish to the donatedDiv
@@ -65,11 +65,11 @@ const fishName = function appendFishName(data){
                                 // remove the donate button
                                 this.remove();
                                 // needing to loop through buttons?
-                                var button = document.getElementById("donatedCount"),
-                                count = 0;
-                                count += 1;
-                                button.innerHTML = "Donated " + count + "/80";
-                                console.log(donatedDiv);
+                                // var button = document.getElementById("donatedCount"),
+                                // count = 0;
+                                // count += 1;
+                                // button.innerHTML = "Donated " + count + "/80";
+                                // console.log(donatedDiv);
                         // log error if this does not work
                         } else console.log("error");
                 })
@@ -87,10 +87,10 @@ const fishName = function appendFishName(data){
                                 // re move the donate button
                                 this.remove();
                                 // needing to loop through buttons?
-                                var button = document.getElementById("caughtCount"),
-                                count = 0;
-                                count += 1;
-                                button.innerHTML = "Caught " + count + "/80";
+                                // var button = document.getElementById("caughtCount"),
+                                // count = 0;
+                                // count += 1;
+                                // button.innerHTML = "Caught " + count + "/80";
                         // log error if this does not work
                         } else console.log("error");
                         })
@@ -98,25 +98,7 @@ const fishName = function appendFishName(data){
         }
 }
 
-saveDonated.addEventListener('click', () => {
-        var textToSave = document.getElementById("donatedFish").querySelectorAll("p")[0].innerHTML;
-        console.log(textToSave);
-        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
-        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-        var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
-     
-        var downloadLink = document.createElement("a");
-        downloadLink.download = fileNameToSaveAs;
-        downloadLink.innerHTML = "Download File";
-        downloadLink.href = textToSaveAsURL;
-    //     downloadLink.onclick = destroyClickedElement;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-     
-        downloadLink.click();
-    })
 
-        // localStorage.setItem('caughtDiv', caughtDiv.innerHTML);
 
 const fishInfo = function appendFishInfo(data){
         for (var i = 0; i < data.length; i++) {
@@ -198,20 +180,26 @@ const bugName = function appendBugName(data){
 
                 // add event listener to donateButton
                 donateButton.addEventListener('click', function(event){
-                        // desired bug pinpoints which div to be cloned
+                        // desired fish pinpoints which div to be cloned
                         var desiredBug = event.target.parentElement;
                         // variable for cloning the node 
                         var clone = desiredBug.cloneNode(true);
+                        clone.id = "donated";
                         // if donate button is clicked
                         if(donateButton){
-                                // append a clone of desired bug to the donatedDiv
+                                // append a clone of desired fish to the donatedDiv
                                 donatedDiv.appendChild(clone);
                                 // remove the donate button
                                 this.remove();
+                                // needing to loop through buttons?
+                                // var button = document.getElementById("donatedCount"),
+                                // count = 0;
+                                // count += 1;
+                                // button.innerHTML = "Donated " + count + "/80";
+                                // console.log(donatedDiv);
                         // log error if this does not work
                         } else console.log("error");
                 })
-
 
                 // add event listener to caughtButton
                         caughtButton.addEventListener('click', function(event){
@@ -221,10 +209,15 @@ const bugName = function appendBugName(data){
                         var clone = desiredBug.cloneNode(true);
                         // if donate button is clicked
                         if(caughtButton){
-                                // append a clone of desired bug to the caughtDiv
+                                // append a clone of desired fish to the caughtDiv
                                 caughtDiv.appendChild(clone);
-                                // remove the donate button
+                                // re move the donate button
                                 this.remove();
+                                // needing to loop through buttons?
+                                // var button = document.getElementById("caughtCount"),
+                                // count = 0;
+                                // count += 1;
+                                // button.innerHTML = "Caught " + count + "/80";
                         // log error if this does not work
                         } else console.log("error");
                         })
@@ -255,6 +248,23 @@ const bugInfo = function appendBugInfo(data){
                 }
         }
 
+
+        saveDonated.addEventListener('click', () => {
+                var textToSave = document.getElementById("donated").querySelectorAll("p")[0].innerHTML;
+                console.log(textToSave);
+                var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+                var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+                var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+             
+                var downloadLink = document.createElement("a");
+                downloadLink.download = fileNameToSaveAs;
+                downloadLink.innerHTML = "Download File";
+                downloadLink.href = textToSaveAsURL;
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+             
+                downloadLink.click();
+            })
 
 // Get the modal
 var modalFish = document.getElementById("myModalFish");
