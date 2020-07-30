@@ -251,9 +251,13 @@ const bugInfo = function appendBugInfo(data){
         }
 
         saveCaught.addEventListener('click', () => {
-                var textToSave = document.getElementById("caught").querySelectorAll("p")[0].innerHTML;
+                var textToSave = document.querySelectorAll("#caught");
+                var array = [];
+                textToSave.forEach(function(element){
+                        array.push(element.querySelector('p').innerHTML);
+                })
                 console.log(textToSave);
-                var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+                var textToSaveAsBlob = new Blob(array, {type:"text/plain"});
                 var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
                 var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
              
@@ -269,12 +273,12 @@ const bugInfo = function appendBugInfo(data){
             
         saveDonated.addEventListener('click', () => {
                 var textToSave = document.querySelectorAll("#donated");
-                textToSave.forEach(function(element){
-                        var array = [];
-                        array.push(element.querySelector('p').innerHTML);
+                var array = [];
+                textToSave.forEach(function(element){         
+                      array.push(element.querySelector('p').innerText);
                 })
                 console.log(textToSave);
-                var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+                var textToSaveAsBlob = new Blob(array, {type:"text/plain"});
                 var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
                 var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
              
