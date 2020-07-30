@@ -1,7 +1,7 @@
 // const { remove } = require("local-storage");
 var caughtButton = {};
 // fetch fish data
-let fishEndpoint = 'http://acnhapi.com/v1a/fish';
+let fishEndpoint = 'https://acnhapi.com/v1a/fish';
 const fishNames = fetch(fishEndpoint)
         .then(response => response.json())
         .then((data) => {
@@ -130,7 +130,7 @@ const fishInfo = function appendFishInfo(data){
 
 
 // fetch bug data
-let bugEndpoint = 'http://acnhapi.com/v1a/bugs';
+let bugEndpoint = 'https://acnhapi.com/v1a/bugs';
 const bugNames = fetch(bugEndpoint)
         .then(response => response.json())
         .then((data) => {
