@@ -80,6 +80,7 @@ const fishName = function appendFishName(data){
                         var desiredFish = event.target.parentElement;
                         // variable for cloning the node 
                         var clone = desiredFish.cloneNode(true);
+                        clone.id = "caught";
                         // if donate button is clicked
                         if(caughtButton){
                                 // append a clone of desired fish to the caughtDiv
@@ -211,6 +212,7 @@ const bugName = function appendBugName(data){
                         if(caughtButton){
                                 // append a clone of desired fish to the caughtDiv
                                 caughtDiv.appendChild(clone);
+                                clone.id = "caught";
                                 // re move the donate button
                                 this.remove();
                                 // needing to loop through buttons?
@@ -248,6 +250,22 @@ const bugInfo = function appendBugInfo(data){
                 }
         }
 
+        saveCaught.addEventListener('click', () => {
+                var textToSave = document.getElementById("caught").querySelectorAll("p")[0].innerHTML;
+                console.log(textToSave);
+                var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+                var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+                var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+             
+                var downloadLink = document.createElement("a");
+                downloadLink.download = fileNameToSaveAs;
+                downloadLink.innerHTML = "Download File";
+                downloadLink.href = textToSaveAsURL;
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+             
+                downloadLink.click();
+            })
 
         saveDonated.addEventListener('click', () => {
                 var textToSave = document.getElementById("donated").querySelectorAll("p")[0].innerHTML;
