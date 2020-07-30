@@ -95,26 +95,26 @@ const fishName = function appendFishName(data){
                         } else console.log("error");
                         })
 
-                        saveDonated.addEventListener('click', () => {
-                            var textToSave = document.getElementById("donatedDiv").value;
-                            var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
-                            var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-                            var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
-                         
-                            var downloadLink = document.createElement("a");
-                            downloadLink.download = fileNameToSaveAs;
-                            downloadLink.innerHTML = "Download File";
-                            downloadLink.href = textToSaveAsURL;
-                        //     downloadLink.onclick = destroyClickedElement;
-                            downloadLink.style.display = "none";
-                            document.body.appendChild(downloadLink);
-                         
-                            downloadLink.click();
-                        })
-
         }
 }
 
+saveDonated.addEventListener('click', () => {
+        var textToSave = document.getElementById("donatedFish").querySelectorAll("p")[0].innerHTML;
+        console.log(textToSave);
+        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+     
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+    //     downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+     
+        downloadLink.click();
+    })
 
         // localStorage.setItem('caughtDiv', caughtDiv.innerHTML);
 
