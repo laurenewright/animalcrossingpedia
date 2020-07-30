@@ -266,9 +266,13 @@ const bugInfo = function appendBugInfo(data){
              
                 downloadLink.click();
             })
-
+            
         saveDonated.addEventListener('click', () => {
-                var textToSave = document.getElementById("donated").querySelectorAll("p")[0].innerHTML;
+                var textToSave = document.querySelectorAll("#donated");
+                textToSave.forEach(function(element){
+                        var array = [];
+                        array.push(element.querySelector('p').innerHTML);
+                })
                 console.log(textToSave);
                 var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
                 var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
