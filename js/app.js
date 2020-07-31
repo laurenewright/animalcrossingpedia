@@ -234,18 +234,22 @@ const bugInfo = function appendBugInfo(data){
                 document.getElementById("bugInfo").appendChild(wrapperDiv);
                 }
         }
-
+        // add listener to saveCaught button
         saveCaught.addEventListener('click', () => {
+                // selecting all elements with the id caught
                 var textToSave = document.querySelectorAll("#caught");
                 var array = [];
+                // addng to the empty array created above the innerHTML of the p tag from the caught element
                 textToSave.forEach(function(element){
                         array.push(element.querySelector('p').innerHTML);
                 })
-                console.log(textToSave);
+                // creating new Blob for the array and setting the type
                 var textToSaveAsBlob = new Blob(array, {type:"text/plain"});
+                // creating new object URL for the new array
                 var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-                var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
-             
+                // capturing the user input for the file name
+                var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAsCaught").value;
+                // creating link for download
                 var downloadLink = document.createElement("a");
                 downloadLink.download = fileNameToSaveAs;
                 downloadLink.innerHTML = "Download File";
@@ -255,18 +259,22 @@ const bugInfo = function appendBugInfo(data){
              
                 downloadLink.click();
             })
-            
+        // add listener to saveDonated button
         saveDonated.addEventListener('click', () => {
+                // selecting all elements with the id donated
                 var textToSave = document.querySelectorAll("#donated");
                 var array = [];
+                // addng to the empty array created above the innerHTML of the p tag from the donated element
                 textToSave.forEach(function(element){         
                       array.push(element.querySelector('p').innerText);
                 })
-                console.log(textToSave);
+                // creating new Blob for the array and setting the type
                 var textToSaveAsBlob = new Blob(array, {type:"text/plain"});
+                // creating new object URL for the new array
                 var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-                var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
-             
+                // capturing the user input for the file name
+                var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAsDonated").value;
+                // creating link for download
                 var downloadLink = document.createElement("a");
                 downloadLink.download = fileNameToSaveAs;
                 downloadLink.innerHTML = "Download File";
@@ -339,5 +347,3 @@ critterFish.onclick = function() {
       
       // Get the element with id="defaultOpen" and click on it
       document.getElementById("defaultOpen").click();
-
-      // user can download a copy of their donated and caught critters 
