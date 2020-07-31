@@ -1,18 +1,27 @@
 .critterFish, .critterBug {
     color: black;
-    padding: 15px 32px;
+    /* padding-left: 50px; */
     text-align: center;
     text-decoration: none;
-    /* display: block; */
+    display: block;
     font-size: 16px;
     margin: 4px 2px;
     /* cursor: pointer; */
     /* float: left; */
   }
   
-.fish {
-  display: block;
-  margin:auto
+#saveFiles{
+      padding-top: 10px;
+}
+
+#infoButtons{
+  padding-top: 65px;
+  padding-right: 10px;
+}
+.fishName, .bugName {
+  display: inline-block;
+  border: 2px solid #E3DBAA;
+  padding: 10px;
 }
 
 #caughtButton, #donateButton, #fishInfoButton, #bugInfoButton, #saveCaught, #saveDonated{
@@ -29,6 +38,16 @@ body{
 
 #fishInfoButton, #bugInfoButton{
   float: right;
+}
+
+#fishInfo, #bugInfo{
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+#fishInfo img, #bugInfo img{
+  width: 30%;  
 }
   /* The Modal (background) */
 .modalFish, .modalBug {

@@ -12,13 +12,15 @@
         <button class="tablink" onclick="openPage('Bugs', this, 'DarkGoldenRod')">Bugs</button>
         <button class="tablink" onclick="openPage('Caught', this, 'DarkGoldenRod')">Caught</button>
         <button class="tablink" onclick="openPage('Donated', this, 'DarkGoldenRod')">Donated</button>
-        <div>
+        <div id= "wrapper">
           <!-- <button>In Season/Show All</button> -->
-          <button id="fishInfoButton">Fish Info</button>
-          <button id="bugInfoButton">Bug Info</button>
-          <p id= "caughtCount"></p>
-          <p id= "donatedCount"></p>
-          <table>
+          <div id="infoButtons">
+            <button id="fishInfoButton">Fish Info</button>
+            <button id="bugInfoButton">Bug Info</button>
+          </div>
+          <!-- <p id= "caughtCount"></p>
+          <p id= "donatedCount"></p> -->
+          <table id="saveFiles">
             <tr>
                 <td>Filename to Save As:</td>
                 <td><input id="inputFileNameToSaveAs"></input></td>
@@ -28,8 +30,8 @@
               <td>Filename to Save As:</td>
               <td><input id="inputFileNameToSaveAs"></input></td>
               <td><button id="saveDonated">Save Donated Critters</button></td>
-          </tr>
-        </table>
+            </tr>
+          </table>
           <div id="Fish" class="tabcontent">
             <div id='fishDiv'></div>
           </div>

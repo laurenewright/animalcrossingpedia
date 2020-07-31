@@ -1,5 +1,3 @@
-// const { remove } = require("local-storage");
-var caughtButton = {};
 // fetch fish data
 let fishEndpoint = 'https://acnhapi.com/v1a/fish';
 const fishNames = fetch(fishEndpoint)
@@ -25,7 +23,7 @@ const fishName = function appendFishName(data){
                 // creating and setting the attributes of the wrapperDiv
                 var wrapperDiv = document.createElement("div");
                 // give wrapperDiv attributes
-                wrapperDiv.setAttribute("class", "fish");
+                wrapperDiv.setAttribute("class", "fishName");
                 wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
                 // creating the nameDiv and iconDiv
                 var nameDiv = document.createElement("p");
@@ -93,16 +91,16 @@ const fishName = function appendFishName(data){
 const fishInfo = function appendFishInfo(data){
         for (var i = 0; i < data.length; i++) {
                 var wrapperDiv = document.createElement("div");
-                wrapperDiv.setAttribute("class", "fish");
+                wrapperDiv.setAttribute("class", "fishInfoDiv");
                 wrapperDiv.setAttribute("id", data[i].name["name-USen"], "hide");
                 var imgDiv = document.createElement("img");
                 var nameDiv = document.createElement("p");
                 var priceDiv = document.createElement("p");
                 var phraseDiv = document.createElement("p");
                 imgDiv.src = data[i]["image_uri"];
-                nameDiv.innerHTML = data[i].name["name-USen"];
-                priceDiv.innerHTML = data[i].price;
-                phraseDiv.innerHTML = data[i]["museum-phrase"];
+                nameDiv.innerHTML = "Name: " + data[i].name["name-USen"];
+                priceDiv.innerHTML = "Price: " + data[i].price;
+                phraseDiv.innerHTML = "Museum Phrase: " + data[i]["museum-phrase"];
                 nameDiv.setAttribute("class", "critterInfo fish");
                 //var caughtButton = document.createElemment("button");
                 caughtButton.innerHTML = "Caught";
@@ -142,7 +140,7 @@ const bugName = function appendBugName(data){
                 // creating and setting the attributes of the wrapperDiv
                 var wrapperDiv = document.createElement("div");
                 // give wrapperDiv attributes
-                wrapperDiv.setAttribute("class", "bug");
+                wrapperDiv.setAttribute("class", "bugName");
                 wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
                 // creating the nameDiv and iconDiv
                 var nameDiv = document.createElement("p");
@@ -196,7 +194,7 @@ const bugName = function appendBugName(data){
                                 // append a clone of desired fish to the caughtDiv
                                 caughtDiv.appendChild(clone);
                                 clone.id = "caught";
-                                // re move the donate button
+                                // remove the donate button
                                 this.remove();
                         // log error if this does not work
                         } else console.log("error");
@@ -209,16 +207,16 @@ const bugName = function appendBugName(data){
 const bugInfo = function appendBugInfo(data){
         for (var i = 0; i < data.length; i++) {
                 var wrapperDiv = document.createElement("div");
-                wrapperDiv.setAttribute("class", "bug");
+                wrapperDiv.setAttribute("class", "bugInfoDiv");
                 wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
                 var imgDiv = document.createElement("img");
                 var nameDiv = document.createElement("p");
                 var priceDiv = document.createElement("p");
                 var phraseDiv = document.createElement("p");
                 imgDiv.src = data[i]["image_uri"];
-                nameDiv.innerHTML = data[i].name["name-USen"];
-                priceDiv.innerHTML = data[i].price;
-                phraseDiv.innerHTML = data[i]["museum-phrase"];
+                nameDiv.innerHTML = "Name: " + data[i].name["name-USen"];
+                priceDiv.innerHTML = "Price: " + data[i].price;
+                phraseDiv.innerHTML = "Museum Phrase: " + data[i]["museum-phrase"];
                 nameDiv.setAttribute("class", "critterInfo bug");
                 //set alt text for reader as the name of critter
                 document.getElementById("bugInfo").appendChild(imgDiv);
