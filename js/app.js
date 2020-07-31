@@ -64,12 +64,6 @@ const fishName = function appendFishName(data){
                                 donatedDiv.appendChild(clone);
                                 // remove the donate button
                                 this.remove();
-                                // needing to loop through buttons?
-                                // var button = document.getElementById("donatedCount"),
-                                // count = 0;
-                                // count += 1;
-                                // button.innerHTML = "Donated " + count + "/80";
-                                // console.log(donatedDiv);
                         // log error if this does not work
                         } else console.log("error");
                 })
@@ -87,11 +81,6 @@ const fishName = function appendFishName(data){
                                 caughtDiv.appendChild(clone);
                                 // re move the donate button
                                 this.remove();
-                                // needing to loop through buttons?
-                                // var button = document.getElementById("caughtCount"),
-                                // count = 0;
-                                // count += 1;
-                                // button.innerHTML = "Caught " + count + "/80";
                         // log error if this does not work
                         } else console.log("error");
                         })
@@ -192,12 +181,6 @@ const bugName = function appendBugName(data){
                                 donatedDiv.appendChild(clone);
                                 // remove the donate button
                                 this.remove();
-                                // needing to loop through buttons?
-                                // var button = document.getElementById("donatedCount"),
-                                // count = 0;
-                                // count += 1;
-                                // button.innerHTML = "Donated " + count + "/80";
-                                // console.log(donatedDiv);
                         // log error if this does not work
                         } else console.log("error");
                 })
@@ -215,11 +198,6 @@ const bugName = function appendBugName(data){
                                 clone.id = "caught";
                                 // re move the donate button
                                 this.remove();
-                                // needing to loop through buttons?
-                                // var button = document.getElementById("caughtCount"),
-                                // count = 0;
-                                // count += 1;
-                                // button.innerHTML = "Caught " + count + "/80";
                         // log error if this does not work
                         } else console.log("error");
                         })
