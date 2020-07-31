@@ -9,12 +9,12 @@ const fishNames = fetch(fishEndpoint)
         })
 // append fish names
 const fishName = function appendFishName(data){
+        // looping through the fish data
         for (var i = 0; i < data.length; i++) {
                 // created button for caught or donate
                 var caughtButton = document.createElement("button");
                 var donateButton = document.createElement("button");
-                caughtButton.setAttribute("class", "addButton");
-                donateButton.setAttribute("class", "addButton");
+                // giving buttons their attributes
                 caughtButton.setAttribute("id", "caughtButton");
                 donateButton.setAttribute("id", "donateButton");
                 // label caught or donate button
@@ -35,7 +35,6 @@ const fishName = function appendFishName(data){
                 // setting class for nameDiv and iconDiv
                 nameDiv.setAttribute("class", "critterFish");
                 iconDiv.setAttribute("class", "critterFish");
-                // set alt text for reader as the name of critter
                 // appending name and icon to wrapperDiv
                 wrapperDiv.appendChild(nameDiv);
                 wrapperDiv.appendChild(iconDiv);
@@ -72,6 +71,7 @@ const fishName = function appendFishName(data){
                         var desiredFish = event.target.parentElement;
                         // variable for cloning the node 
                         var clone = desiredFish.cloneNode(true);
+                        // giving clone its attribute
                         clone.id = "caught";
                         // if donate button is clicked
                         if(caughtButton){
@@ -89,27 +89,29 @@ const fishName = function appendFishName(data){
 
 
 const fishInfo = function appendFishInfo(data){
+        // looping through the fish data
         for (var i = 0; i < data.length; i++) {
+                // creating the wrapperDiv
                 var wrapperDiv = document.createElement("div");
+                // giving the wrapperDiv its attributes
                 wrapperDiv.setAttribute("class", "fishInfoDiv");
-                wrapperDiv.setAttribute("id", data[i].name["name-USen"], "hide");
+                wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
+                // creating elements for img, name, price, and museum phrase
                 var imgDiv = document.createElement("img");
                 var nameDiv = document.createElement("p");
                 var priceDiv = document.createElement("p");
                 var phraseDiv = document.createElement("p");
+                // giving each div their content
                 imgDiv.src = data[i]["image_uri"];
                 nameDiv.innerHTML = "Name: " + data[i].name["name-USen"];
                 priceDiv.innerHTML = "Price: " + data[i].price;
                 phraseDiv.innerHTML = "Museum Phrase: " + data[i]["museum-phrase"];
-                nameDiv.setAttribute("class", "critterInfo fish");
-                //var caughtButton = document.createElemment("button");
-                caughtButton.innerHTML = "Caught";
-                donateButton.innerHTML = "Donated";
-                //set alt text for reader as the name of critter
+                // appending elements to wrapperDiv
                 wrapperDiv.appendChild(imgDiv);
                 wrapperDiv.appendChild(nameDiv);
                 wrapperDiv.appendChild(priceDiv);
                 wrapperDiv.appendChild(phraseDiv);
+                // appending wrapperDiv to fishInfo for modal
                 document.getElementById("fishInfo").appendChild(wrapperDiv);
         }
 }
@@ -128,16 +130,18 @@ const bugNames = fetch(bugEndpoint)
 
 // append bug names
 const bugName = function appendBugName(data){
+        // looping through bug dataa
         for (var i = 0; i < data.length; i++) {
                 // created button for caught or donate
                 var caughtButton = document.createElement("button");
-                caughtButton.setAttribute("id", "caughtButton");
                 var donateButton = document.createElement("button");
+                // setting button attributes
+                caughtButton.setAttribute("id", "caughtButton");
                 donateButton.setAttribute("id", "donateButton");
                 // label caught or donate button
                 caughtButton.innerHTML = "Caught";
                 donateButton.innerHTML = "Donated";
-                // creating and setting the attributes of the wrapperDiv
+                // creating the wrapperDiv 
                 var wrapperDiv = document.createElement("div");
                 // give wrapperDiv attributes
                 wrapperDiv.setAttribute("class", "bugName");
@@ -184,21 +188,21 @@ const bugName = function appendBugName(data){
                 })
 
                 // add event listener to caughtButton
-                        caughtButton.addEventListener('click', function(event){
-                                // desired fish pinpoints which div to be cloned
-                        var desiredBug = event.target.parentElement;
-                        // variable for cloning the node 
-                        var clone = desiredBug.cloneNode(true);
-                        // if donate button is clicked
-                        if(caughtButton){
-                                // append a clone of desired fish to the caughtDiv
-                                caughtDiv.appendChild(clone);
-                                clone.id = "caught";
-                                // remove the donate button
-                                this.remove();
-                        // log error if this does not work
-                        } else console.log("error");
-                        })
+                caughtButton.addEventListener('click', function(event){
+                        // desired fish pinpoints which div to be cloned
+                var desiredBug = event.target.parentElement;
+                // variable for cloning the node 
+                var clone = desiredBug.cloneNode(true);
+                // if donate button is clicked
+                if(caughtButton){
+                        // append a clone of desired fish to the caughtDiv
+                        caughtDiv.appendChild(clone);
+                        clone.id = "caught";
+                        // remove the donate button
+                        this.remove();
+                // log error if this does not work
+                } else console.log("error");
+                })
         }
 }
 
@@ -206,23 +210,28 @@ const bugName = function appendBugName(data){
 // fetch and display critter info when critter is clicked
 const bugInfo = function appendBugInfo(data){
         for (var i = 0; i < data.length; i++) {
+                // creating wrapper div
                 var wrapperDiv = document.createElement("div");
                 wrapperDiv.setAttribute("class", "bugInfoDiv");
                 wrapperDiv.setAttribute("id", data[i].name["name-USen"]);
+                // creating elements for img, name, price, and museum phrase
                 var imgDiv = document.createElement("img");
                 var nameDiv = document.createElement("p");
                 var priceDiv = document.createElement("p");
                 var phraseDiv = document.createElement("p");
+                // giving each div their content
                 imgDiv.src = data[i]["image_uri"];
                 nameDiv.innerHTML = "Name: " + data[i].name["name-USen"];
                 priceDiv.innerHTML = "Price: " + data[i].price;
                 phraseDiv.innerHTML = "Museum Phrase: " + data[i]["museum-phrase"];
-                nameDiv.setAttribute("class", "critterInfo bug");
-                //set alt text for reader as the name of critter
-                document.getElementById("bugInfo").appendChild(imgDiv);
-                document.getElementById("bugInfo").appendChild(nameDiv);
-                document.getElementById("bugInfo").appendChild(priceDiv);
-                document.getElementById("bugInfo").appendChild(phraseDiv);
+                nameDiv.setAttribute("class", "bug");
+                // appending elements to wrapperDiv
+                wrapperDiv.appendChild(imgDiv);
+                wrapperDiv.appendChild(nameDiv);
+                wrapperDiv.appendChild(priceDiv);
+                wrapperDiv.appendChild(phraseDiv);
+                // appending wrapperDiv to fishInfo for modal
+                document.getElementById("bugInfo").appendChild(wrapperDiv);
                 }
         }
 
