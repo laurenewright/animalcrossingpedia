@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/laurenewright/animalcrossingpedia#readme",
   "dependencies": {
-    "date-and-time": "^0.13.1",
+    "date-and-time": "^0.14.2",
     "geolocator": "^2.1.5",
     "local-storage": "^2.0.0"
   }
